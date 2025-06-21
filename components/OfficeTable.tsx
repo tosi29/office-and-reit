@@ -40,7 +40,7 @@ const OfficeTable: React.FC<OfficeTableProps> = ({ data }) => {
                 {item.vacancyRate.toFixed(2)}
               </td>
               <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'right' }}>
-                {Math.round(item.rentalRate * 3.306).toLocaleString()}
+                {item.rentalRate.toLocaleString()}
               </td>
               <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'right' }}>
                 {item.reitIndex.toLocaleString()}

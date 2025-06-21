@@ -43,7 +43,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
               labelFormatter={(label) => `月: ${label}`}
               formatter={(value, name) => {
                 if (name === '平均空室率') return [`${value}%`, name];
-                if (name === '平均賃料') return [`${Math.round(Number(value) * 3.306).toLocaleString()}円/坪`, name];
+                if (name === '平均賃料') return [`${Number(value).toLocaleString()}円/坪`, name];
                 if (name === '東証REIT指数') return [`${Number(value).toLocaleString()}`, name];
                 return [value, name];
               }}
