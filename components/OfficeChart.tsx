@@ -23,7 +23,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
 
   return (
     <div style={{ marginTop: '2rem' }}>
-      <h2>オフィス空室率・賃料・REIT指数推移グラフ</h2>
+      <h2>オフィス平均空室率・平均賃料・東証REIT指数推移グラフ</h2>
       
       {/* 表示切り替えボタン */}
       <div style={{ 
@@ -46,7 +46,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
             fontWeight: 'bold'
           }}
         >
-          空室率 {vacancyRateVisible ? '✓' : '✗'}
+          平均空室率 {vacancyRateVisible ? '✓' : '✗'}
         </button>
         
         <button
@@ -62,7 +62,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
             fontWeight: 'bold'
           }}
         >
-          賃料 {rentalRateVisible ? '✓' : '✗'}
+          平均賃料 {rentalRateVisible ? '✓' : '✗'}
         </button>
         
         <button
@@ -78,7 +78,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
             fontWeight: 'bold'
           }}
         >
-          REIT指数 {reitIndexVisible ? '✓' : '✗'}
+          東証REIT指数 {reitIndexVisible ? '✓' : '✗'}
         </button>
       </div>
       <div style={{ width: '100%', height: '400px', marginTop: '1rem' }}>
@@ -105,9 +105,9 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
             <Tooltip 
               labelFormatter={(label) => `月: ${label}`}
               formatter={(value, name) => {
-                if (name === '空室率') return [`${value}%`, name];
-                if (name === '賃料') return [`${Number(value).toLocaleString()}円/㎡/月`, name];
-                if (name === 'REIT指数') return [`${Number(value).toLocaleString()}`, name];
+                if (name === '平均空室率') return [`${value}%`, name];
+                if (name === '平均賃料') return [`${Number(value).toLocaleString()}円/坪`, name];
+                if (name === '東証REIT指数') return [`${Number(value).toLocaleString()}`, name];
                 return [value, name];
               }}
             />
@@ -119,7 +119,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 dataKey="vacancyRate"
                 stroke="#8884d8"
                 strokeWidth={2}
-                name="空室率"
+                name="平均空室率"
                 dot={{ fill: '#8884d8' }}
               />
             )}
@@ -130,7 +130,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 dataKey="rentalRate"
                 stroke="#82ca9d"
                 strokeWidth={2}
-                name="賃料"
+                name="平均賃料"
                 dot={{ fill: '#82ca9d' }}
               />
             )}
@@ -141,7 +141,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 dataKey="reitIndex"
                 stroke="#ff7300"
                 strokeWidth={2}
-                name="REIT指数"
+                name="東証REIT指数"
                 dot={{ fill: '#ff7300' }}
               />
             )}
