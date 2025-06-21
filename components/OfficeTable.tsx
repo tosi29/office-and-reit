@@ -7,7 +7,7 @@ interface OfficeTableProps {
 const OfficeTable: React.FC<OfficeTableProps> = ({ data }) => {
   return (
     <div style={{ marginTop: '2rem' }}>
-      <h2>オフィス空室率・賃料データテーブル</h2>
+      <h2>オフィス空室率・賃料・REIT指数データテーブル</h2>
       <table style={{ 
         width: '100%', 
         borderCollapse: 'collapse',
@@ -25,6 +25,9 @@ const OfficeTable: React.FC<OfficeTableProps> = ({ data }) => {
             <th style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'right' }}>
               賃料 (円/㎡/月)
             </th>
+            <th style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'right' }}>
+              REIT指数
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -38,6 +41,9 @@ const OfficeTable: React.FC<OfficeTableProps> = ({ data }) => {
               </td>
               <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'right' }}>
                 {item.rentalRate.toLocaleString()}
+              </td>
+              <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'right' }}>
+                {item.reitIndex.toLocaleString()}
               </td>
             </tr>
           ))}

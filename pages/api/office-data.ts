@@ -16,10 +16,15 @@ const generateStubData = (): OfficeData[] => {
     const baseRentalRate = 25000; // base rental rate in yen per sqm
     const rentalRate = Math.round((baseRentalRate - (vacancyRate - 5) * 1000 + (Math.random() - 0.5) * 2000));
     
+    // Generate Tokyo REIT index data (typically ranges from 1500-2500)
+    const baseReitIndex = 2000;
+    const reitIndex = Math.round(baseReitIndex + (Math.random() - 0.5) * 600 + Math.sin(i * 0.5) * 200);
+    
     data.push({
       month,
       vacancyRate,
       rentalRate,
+      reitIndex,
       date: date.toISOString(),
     });
   }
