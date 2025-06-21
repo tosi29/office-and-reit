@@ -24,9 +24,9 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
             data={data}
             margin={{
               top: 5,
-              right: 30,
+              right: 60,
               left: 20,
-              bottom: 5,
+              bottom: 60,
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -48,7 +48,12 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 return [value, name];
               }}
             />
-            <Legend />
+            <Legend 
+              wrapperStyle={{ paddingTop: '20px' }}
+              iconType="line"
+              align="center"
+              verticalAlign="bottom"
+            />
             <Line
               yAxisId="left"
               type="monotone"
