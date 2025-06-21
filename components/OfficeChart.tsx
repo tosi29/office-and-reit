@@ -17,7 +17,7 @@ interface OfficeChartProps {
 const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
   return (
     <div style={{ marginTop: '2rem' }}>
-      <h2>オフィス空室率・賃料推移グラフ</h2>
+      <h2>オフィス空室率・賃料・REIT指数推移グラフ</h2>
       <div style={{ width: '100%', height: '400px', marginTop: '1rem' }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
@@ -38,11 +38,13 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
             />
             <YAxis yAxisId="left" orientation="left" />
             <YAxis yAxisId="right" orientation="right" />
+            <YAxis yAxisId="reit" orientation="right" />
             <Tooltip 
               labelFormatter={(label) => `月: ${label}`}
               formatter={(value, name) => {
                 if (name === '空室率') return [`${value}%`, name];
                 if (name === '賃料') return [`${Number(value).toLocaleString()}円/㎡/月`, name];
+                if (name === 'REIT指数') return [`${Number(value).toLocaleString()}`, name];
                 return [value, name];
               }}
             />
@@ -64,6 +66,15 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
               strokeWidth={2}
               name="賃料"
               dot={{ fill: '#82ca9d' }}
+            />
+            <Line
+              yAxisId="reit"
+              type="monotone"
+              dataKey="reitIndex"
+              stroke="#ff7300"
+              strokeWidth={2}
+              name="REIT指数"
+              dot={{ fill: '#ff7300' }}
             />
           </LineChart>
         </ResponsiveContainer>
