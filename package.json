@@ -19,12 +19,16 @@
     "recharts": "^2.15.4"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.10",
     "@types/node": "^24.0.3",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@types/recharts": "^1.8.29",
+    "autoprefixer": "^10.4.21",
     "eslint": "9.29.0",
     "eslint-config-next": "15.3.4",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3"
   }
 }
