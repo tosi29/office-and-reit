@@ -6,7 +6,7 @@ interface OfficeTableProps {
 
 const OfficeTable: React.FC<OfficeTableProps> = ({ data }) => {
   return (
-    <div style={{ marginTop: '2rem' }}>
+    <div style={{ marginTop: '1rem' }}>
       <table style={{ 
         width: '100%', 
         borderCollapse: 'collapse',
