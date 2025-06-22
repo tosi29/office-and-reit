@@ -180,7 +180,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 stroke="#8884d8"
                 strokeWidth={2}
                 name="平均空室率"
-                dot={{ fill: '#8884d8' }}
+                dot={false}
               />
             )}
             {rentalRateVisible && (
@@ -191,7 +191,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 stroke="#82ca9d"
                 strokeWidth={2}
                 name="平均賃料"
-                dot={{ fill: '#82ca9d' }}
+                dot={false}
               />
             )}
             {reitIndexVisible && (
@@ -202,11 +202,11 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 stroke="#ff7300"
                 strokeWidth={2}
                 name="東証REIT指数"
-                dot={{ fill: '#ff7300' }}
+                dot={false}
               />
             )}
             <Brush
-              dataKey="month"
+              dataKey="month" 
               height={40}
               stroke="#8884d8"
               onChange={handleBrushChange}
