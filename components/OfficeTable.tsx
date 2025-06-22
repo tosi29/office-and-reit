@@ -7,7 +7,6 @@ interface OfficeTableProps {
 const OfficeTable: React.FC<OfficeTableProps> = ({ data }) => {
   return (
     <div style={{ marginTop: '2rem' }}>
-      <h2>オフィス平均空室率・平均賃料・東証REIT指数データテーブル</h2>
       <table style={{ 
         width: '100%', 
         borderCollapse: 'collapse',
