@@ -23,30 +23,44 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
   const [reitIndexVisible, setReitIndexVisible] = useState(true);
   
   // ドラッグ選択による範囲フィルタを管理するstate
-  const [selectedRange, setSelectedRange] = useState<{ startIndex: number; endIndex: number } | null>(null);
+  const [brushRange, setBrushRange] = useState<{ startIndex?: number; endIndex?: number }>({});
   
   // 選択範囲に基づいてデータをフィルタリング
-  const filteredData = selectedRange 
-    ? data.slice(selectedRange.startIndex, selectedRange.endIndex + 1)
+  const filteredData = brushRange.startIndex !== undefined && brushRange.endIndex !== undefined
+    ? data.slice(brushRange.startIndex, brushRange.endIndex + 1)
     : data;
   
   // ブラシでの選択変更ハンドラ
   const handleBrushChange = (brushData: { startIndex?: number; endIndex?: number } | null) => {
-    if (brushData && brushData.startIndex !== undefined && brushData.endIndex !== undefined) {
-      setSelectedRange({ 
-        startIndex: brushData.startIndex, 
-        endIndex: brushData.endIndex 
-      });
+    console.log('Brush change:', brushData); // デバッグ用
+    if (brushData) {
+      setBrushRange(brushData);
+    } else {
+      setBrushRange({});
     }
   };
   
   // 選択範囲をリセット
   const resetSelection = () => {
-    setSelectedRange(null);
+    setBrushRange({});
   };
 
   return (
     <div style={{ marginTop: '2rem' }}>
+      {/* デバッグ情報 */}
+      {process.env.NODE_ENV === 'development' && (
+        <div style={{ 
+          fontSize: '12px', 
+          color: '#666', 
+          marginBottom: '1rem',
+          padding: '8px',
+          backgroundColor: '#f5f5f5',
+          borderRadius: '4px'
+        }}>
+          データ総数: {data.length}, 表示中: {filteredData.length}, 
+          選択範囲: {brushRange.startIndex !== undefined ? `${brushRange.startIndex}-${brushRange.endIndex}` : '未選択'}
+        </div>
+      )}
       
       {/* 表示切り替えボタン */}
       <div style={{ 
@@ -104,7 +118,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
           東証REIT指数 {reitIndexVisible ? '✓' : '✗'}
         </button>
         
-        {selectedRange && (
+        {(brushRange.startIndex !== undefined && brushRange.endIndex !== undefined) && (
           <button
             onClick={resetSelection}
             style={{
@@ -130,7 +144,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
               top: 5,
               right: 60,
               left: 20,
-              bottom: 100, // Increased bottom margin for brush
+              bottom: 120, // Increased bottom margin for brush and legend
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -153,7 +167,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
               }}
             />
             <Legend 
-              wrapperStyle={{ paddingTop: '20px' }}
+              wrapperStyle={{ paddingTop: '20px', paddingBottom: '10px' }}
               iconType="line"
               align="center"
               verticalAlign="bottom"
@@ -193,10 +207,9 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
             )}
             <Brush
               dataKey="month"
-              height={60}
+              height={40}
               stroke="#8884d8"
               onChange={handleBrushChange}
-              data={data}
             />
           </LineChart>
         </ResponsiveContainer>
