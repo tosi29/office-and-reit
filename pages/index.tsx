@@ -33,7 +33,7 @@ const Home: NextPage = () => {
 
   return (
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <h1>Office and REIT</h1>
+      <h1>東京のオフィス市況と東証REIT指数</h1>
       
       {loading && <p>データを読み込み中...</p>}
       
