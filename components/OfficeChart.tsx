@@ -7,7 +7,8 @@ import {
   CartesianGrid, 
   Tooltip, 
   Legend, 
-  ResponsiveContainer 
+  ResponsiveContainer,
+  Brush
 } from 'recharts';
 import { OfficeData } from '../types/office';
 
@@ -80,7 +81,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
           東証REIT指数 {reitIndexVisible ? '✓' : '✗'}
         </button>
       </div>
-      <div style={{ width: '100%', height: '400px', marginTop: '1rem' }}>
+      <div style={{ width: '100%', height: '450px', marginTop: '1rem' }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
@@ -88,7 +89,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
               top: 5,
               right: 60,
               left: 20,
-              bottom: 60,
+              bottom: 80,
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -149,6 +150,12 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 dot={{ fill: '#ff7300', r: 1 }}
               />
             )}
+            <Brush 
+              dataKey="month" 
+              height={30}
+              stroke="#8884d8"
+              fill="rgba(136, 132, 216, 0.1)"
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>
