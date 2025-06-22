@@ -21,46 +21,9 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
   const [vacancyRateVisible, setVacancyRateVisible] = useState(true);
   const [rentalRateVisible, setRentalRateVisible] = useState(true);
   const [reitIndexVisible, setReitIndexVisible] = useState(true);
-  
-  // ドラッグ選択による範囲フィルタを管理するstate
-  const [brushRange, setBrushRange] = useState<{ startIndex?: number; endIndex?: number }>({});
-  
-  // 選択範囲に基づいてデータをフィルタリング
-  const filteredData = brushRange.startIndex !== undefined && brushRange.endIndex !== undefined
-    ? data.slice(brushRange.startIndex, brushRange.endIndex + 1)
-    : data;
-  
-  // ブラシでの選択変更ハンドラ
-  const handleBrushChange = (brushData: { startIndex?: number; endIndex?: number } | null) => {
-    console.log('Brush change:', brushData); // デバッグ用
-    if (brushData) {
-      setBrushRange(brushData);
-    } else {
-      setBrushRange({});
-    }
-  };
-  
-  // 選択範囲をリセット
-  const resetSelection = () => {
-    setBrushRange({});
-  };
 
   return (
     <div style={{ marginTop: '2rem' }}>
-      {/* デバッグ情報 */}
-      {process.env.NODE_ENV === 'development' && (
-        <div style={{ 
-          fontSize: '12px', 
-          color: '#666', 
-          marginBottom: '1rem',
-          padding: '8px',
-          backgroundColor: '#f5f5f5',
-          borderRadius: '4px'
-        }}>
-          データ総数: {data.length}, 表示中: {filteredData.length}, 
-          選択範囲: {brushRange.startIndex !== undefined ? `${brushRange.startIndex}-${brushRange.endIndex}` : '未選択'}
-        </div>
-      )}
       
       {/* 表示切り替えボタン */}
       <div style={{ 
@@ -117,34 +80,16 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
         >
           東証REIT指数 {reitIndexVisible ? '✓' : '✗'}
         </button>
-        
-        {(brushRange.startIndex !== undefined && brushRange.endIndex !== undefined) && (
-          <button
-            onClick={resetSelection}
-            style={{
-              padding: '8px 16px',
-              backgroundColor: '#f44336',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: 'bold'
-            }}
-          >
-            選択範囲をリセット
-          </button>
-        )}
       </div>
-      <div style={{ width: '100%', height: '400px', marginTop: '1rem' }}>
+      <div style={{ width: '100%', height: '500px', marginTop: '1rem' }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
-            data={filteredData}
+            data={data}
             margin={{
               top: 5,
               right: 60,
               left: 20,
-              bottom: 120, // Increased bottom margin for brush and legend
+              bottom: 80, 
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -167,7 +112,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
               }}
             />
             <Legend 
-              wrapperStyle={{ paddingTop: '20px', paddingBottom: '10px' }}
+              wrapperStyle={{ paddingTop: '20px' }}
               iconType="line"
               align="center"
               verticalAlign="bottom"
@@ -207,10 +152,15 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
             )}
             <Brush
               dataKey="month" 
-              height={40}
+              height={60}
               stroke="#8884d8"
-              onChange={handleBrushChange}
-            />
+              startIndex={data.length - 50}
+              endIndex={data.length - 1}
+            >
+              <LineChart>
+                <Line dataKey="vacancyRate" stroke="#8884d8" strokeWidth={1} dot={false} />
+              </LineChart>
+            </Brush>
           </LineChart>
         </ResponsiveContainer>
       </div>
