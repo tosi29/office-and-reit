@@ -85,7 +85,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
           <LineChart
             data={data}
             margin={{
-              top: 5,
+              top: 20,
               right: 30,
               left: 20,
               bottom: 5,
@@ -110,7 +110,12 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 return [value, name];
               }}
             />
-            <Legend />
+            <Legend 
+              wrapperStyle={{
+                fontSize: '12px',
+                marginTop: '10px'
+              }}
+            />
             {vacancyRateVisible && (
               <Line
                 yAxisId="left"
