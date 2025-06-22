@@ -86,7 +86,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
             data={data}
             margin={{
               top: 20,
-              right: 30,
+              right: 120,
               left: 20,
               bottom: 5,
             }}
@@ -111,9 +111,12 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
               }}
             />
             <Legend 
+              layout="vertical"
+              align="right"
+              verticalAlign="middle"
               wrapperStyle={{
                 fontSize: '12px',
-                marginTop: '10px'
+                paddingLeft: '20px'
               }}
             />
             {vacancyRateVisible && (
