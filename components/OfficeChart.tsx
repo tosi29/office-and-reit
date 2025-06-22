@@ -89,7 +89,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
               top: 5,
               right: 60,
               left: 20,
-              bottom: 160, 
+              bottom: 200, 
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
