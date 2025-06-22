@@ -85,7 +85,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
           <LineChart
             data={data}
             margin={{
-              top: 20,
+              top: 40,
               right: 120,
               left: 20,
               bottom: 5,
@@ -113,7 +113,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
             <Legend 
               layout="vertical"
               align="right"
-              verticalAlign="middle"
+              verticalAlign="top"
               wrapperStyle={{
                 fontSize: '12px',
                 paddingLeft: '20px'
