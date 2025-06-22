@@ -34,7 +34,6 @@ const Home: NextPage = () => {
   return (
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
       <h1>Office and REIT</h1>
-      <p>オフィスの平均空室率と平均賃料の関係を表示します</p>
       
       {loading && <p>データを読み込み中...</p>}
       

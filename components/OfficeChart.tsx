@@ -23,7 +23,6 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
 
   return (
     <div style={{ marginTop: '2rem' }}>
-      <h2>オフィス平均空室率・平均賃料・東証REIT指数推移グラフ</h2>
       
       {/* 表示切り替えボタン */}
       <div style={{ 
