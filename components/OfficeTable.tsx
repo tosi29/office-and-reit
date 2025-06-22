@@ -6,42 +6,37 @@ interface OfficeTableProps {
 
 const OfficeTable: React.FC<OfficeTableProps> = ({ data }) => {
   return (
-    <div style={{ marginTop: '2rem' }}>
-      <table style={{ 
-        width: '100%', 
-        borderCollapse: 'collapse',
-        marginTop: '1rem',
-        border: '1px solid #ddd'
-      }}>
+    <div className="mt-8">
+      <table className="w-full border-collapse mt-4 border border-gray-300">
         <thead>
-          <tr style={{ backgroundColor: '#f5f5f5' }}>
-            <th style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'left' }}>
+          <tr className="bg-gray-100">
+            <th className="p-3 border border-gray-300 text-left">
               月
             </th>
-            <th style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'right' }}>
+            <th className="p-3 border border-gray-300 text-right">
               平均空室率 (%)
             </th>
-            <th style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'right' }}>
+            <th className="p-3 border border-gray-300 text-right">
               平均賃料 (円/坪)
             </th>
-            <th style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'right' }}>
+            <th className="p-3 border border-gray-300 text-right">
               東証REIT指数
             </th>
           </tr>
         </thead>
         <tbody>
           {data.map((item, index) => (
-            <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#fff' : '#f9f9f9' }}>
-              <td style={{ padding: '12px', border: '1px solid #ddd' }}>
+            <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td className="p-3 border border-gray-300">
                 {item.month}
               </td>
-              <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'right' }}>
+              <td className="p-3 border border-gray-300 text-right">
                 {item.vacancyRate.toFixed(2)}
               </td>
-              <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'right' }}>
+              <td className="p-3 border border-gray-300 text-right">
                 {item.rentalRate.toLocaleString()}
               </td>
-              <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'right' }}>
+              <td className="p-3 border border-gray-300 text-right">
                 {item.reitIndex.toLocaleString()}
               </td>
             </tr>

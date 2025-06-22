@@ -32,13 +32,13 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <h1>Office and REIT</h1>
+    <div className="p-8 max-w-6xl mx-auto">
+      <h1 className="text-3xl font-bold mb-6">Office and REIT</h1>
       
-      {loading && <p>データを読み込み中...</p>}
+      {loading && <p className="text-gray-600">データを読み込み中...</p>}
       
       {error && (
-        <div style={{ color: 'red', padding: '1rem', backgroundColor: '#ffe6e6', border: '1px solid #ff0000', borderRadius: '4px' }}>
+        <div className="text-red-600 p-4 bg-red-50 border border-red-200 rounded">
           エラー: {error}
         </div>
       )}
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
       )}
       
       {!loading && !error && officeData.length === 0 && (
-        <p>データがありません</p>
+        <p className="text-gray-600">データがありません</p>
       )}
     </div>
   );

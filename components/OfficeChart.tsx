@@ -22,65 +22,44 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
   const [reitIndexVisible, setReitIndexVisible] = useState(true);
 
   return (
-    <div style={{ marginTop: '2rem' }}>
+    <div className="mt-8">
       
       {/* 表示切り替えボタン */}
-      <div style={{ 
-        marginTop: '1rem', 
-        marginBottom: '1rem', 
-        display: 'flex', 
-        gap: '1rem', 
-        flexWrap: 'wrap' 
-      }}>
+      <div className="mt-4 mb-4 flex gap-4 flex-wrap">
         <button
           onClick={() => setVacancyRateVisible(!vacancyRateVisible)}
-          style={{
-            padding: '8px 16px',
-            backgroundColor: vacancyRateVisible ? '#8884d8' : '#e0e0e0',
-            color: vacancyRateVisible ? 'white' : '#666',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontSize: '14px',
-            fontWeight: 'bold'
-          }}
+          className={`px-4 py-2 rounded border-none cursor-pointer text-sm font-bold ${
+            vacancyRateVisible 
+              ? 'bg-blue-500 text-white' 
+              : 'bg-gray-300 text-gray-600'
+          }`}
         >
           平均空室率 {vacancyRateVisible ? '✓' : '✗'}
         </button>
         
         <button
           onClick={() => setRentalRateVisible(!rentalRateVisible)}
-          style={{
-            padding: '8px 16px',
-            backgroundColor: rentalRateVisible ? '#82ca9d' : '#e0e0e0',
-            color: rentalRateVisible ? 'white' : '#666',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontSize: '14px',
-            fontWeight: 'bold'
-          }}
+          className={`px-4 py-2 rounded border-none cursor-pointer text-sm font-bold ${
+            rentalRateVisible 
+              ? 'bg-green-500 text-white' 
+              : 'bg-gray-300 text-gray-600'
+          }`}
         >
           平均賃料 {rentalRateVisible ? '✓' : '✗'}
         </button>
         
         <button
           onClick={() => setReitIndexVisible(!reitIndexVisible)}
-          style={{
-            padding: '8px 16px',
-            backgroundColor: reitIndexVisible ? '#ff7300' : '#e0e0e0',
-            color: reitIndexVisible ? 'white' : '#666',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontSize: '14px',
-            fontWeight: 'bold'
-          }}
+          className={`px-4 py-2 rounded border-none cursor-pointer text-sm font-bold ${
+            reitIndexVisible 
+              ? 'bg-orange-500 text-white' 
+              : 'bg-gray-300 text-gray-600'
+          }`}
         >
           東証REIT指数 {reitIndexVisible ? '✓' : '✗'}
         </button>
       </div>
-      <div style={{ width: '100%', height: '400px', marginTop: '1rem' }}>
+      <div className="w-full h-96 mt-4">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
