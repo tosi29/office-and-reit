@@ -150,11 +150,17 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 dot={{ fill: '#ff7300', r: 1 }}
               />
             )}
+            {/* Brush component for range selection - position can be customized */}
             <Brush 
               dataKey="month" 
               height={30}
               stroke="#8884d8"
               fill="rgba(136, 132, 216, 0.1)"
+              // Position options:
+              // y={0} - top position
+              // x={50} - horizontal offset  
+              // width={400} - custom width
+              // height={40} - custom height
             />
           </LineChart>
         </ResponsiveContainer>
