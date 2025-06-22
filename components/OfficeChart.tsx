@@ -89,7 +89,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
               top: 5,
               right: 60,
               left: 20,
-              bottom: 80, 
+              bottom: 140, 
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -154,8 +154,6 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
               dataKey="month" 
               height={60}
               stroke="#8884d8"
-              startIndex={data.length - 50}
-              endIndex={data.length - 1}
             >
               <LineChart>
                 <Line dataKey="vacancyRate" stroke="#8884d8" strokeWidth={1} dot={false} />
