@@ -7,7 +7,8 @@ import {
   CartesianGrid, 
   Tooltip, 
   Legend, 
-  ResponsiveContainer 
+  ResponsiveContainer,
+  Brush
 } from 'recharts';
 import { OfficeData } from '../types/office';
 
@@ -20,6 +21,29 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
   const [vacancyRateVisible, setVacancyRateVisible] = useState(true);
   const [rentalRateVisible, setRentalRateVisible] = useState(true);
   const [reitIndexVisible, setReitIndexVisible] = useState(true);
+  
+  // ドラッグ選択による範囲フィルタを管理するstate
+  const [selectedRange, setSelectedRange] = useState<{ startIndex: number; endIndex: number } | null>(null);
+  
+  // 選択範囲に基づいてデータをフィルタリング
+  const filteredData = selectedRange 
+    ? data.slice(selectedRange.startIndex, selectedRange.endIndex + 1)
+    : data;
+  
+  // ブラシでの選択変更ハンドラ
+  const handleBrushChange = (brushData: { startIndex?: number; endIndex?: number } | null) => {
+    if (brushData && brushData.startIndex !== undefined && brushData.endIndex !== undefined) {
+      setSelectedRange({ 
+        startIndex: brushData.startIndex, 
+        endIndex: brushData.endIndex 
+      });
+    }
+  };
+  
+  // 選択範囲をリセット
+  const resetSelection = () => {
+    setSelectedRange(null);
+  };
 
   return (
     <div style={{ marginTop: '2rem' }}>
@@ -79,16 +103,34 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
         >
           東証REIT指数 {reitIndexVisible ? '✓' : '✗'}
         </button>
+        
+        {selectedRange && (
+          <button
+            onClick={resetSelection}
+            style={{
+              padding: '8px 16px',
+              backgroundColor: '#f44336',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '14px',
+              fontWeight: 'bold'
+            }}
+          >
+            選択範囲をリセット
+          </button>
+        )}
       </div>
       <div style={{ width: '100%', height: '400px', marginTop: '1rem' }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
-            data={data}
+            data={filteredData}
             margin={{
               top: 5,
               right: 60,
               left: 20,
-              bottom: 60,
+              bottom: 100, // Increased bottom margin for brush
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -149,6 +191,13 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 dot={{ fill: '#ff7300' }}
               />
             )}
+            <Brush
+              dataKey="month"
+              height={60}
+              stroke="#8884d8"
+              onChange={handleBrushChange}
+              data={data}
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>
