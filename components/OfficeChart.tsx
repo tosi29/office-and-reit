@@ -89,7 +89,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
               top: 5,
               right: 60,
               left: 20,
-              bottom: 140, 
+              bottom: 160, 
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -125,7 +125,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 stroke="#8884d8"
                 strokeWidth={2}
                 name="平均空室率"
-                dot={false}
+                dot={{ fill: '#8884d8', r: 1 }}
               />
             )}
             {rentalRateVisible && (
@@ -136,7 +136,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 stroke="#82ca9d"
                 strokeWidth={2}
                 name="平均賃料"
-                dot={false}
+                dot={{ fill: '#82ca9d', r: 1 }}
               />
             )}
             {reitIndexVisible && (
@@ -147,7 +147,7 @@ const OfficeChart: React.FC<OfficeChartProps> = ({ data }) => {
                 stroke="#ff7300"
                 strokeWidth={2}
                 name="東証REIT指数"
-                dot={false}
+                dot={{ fill: '#ff7300', r: 1 }}
               />
             )}
             <Brush
