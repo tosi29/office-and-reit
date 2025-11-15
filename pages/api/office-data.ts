@@ -1973,6 +1973,48 @@ const getHistoricalData = (): OfficeData[] => {
     "rentalRate": 20755,
     "reitIndex": 1712.43,
     "date": "2025-04-01T00:00:00.000Z"
+  },
+  {
+    "month": "2025年05月",
+    "vacancyRate": 3.56,
+    "rentalRate": 20776,
+    "reitIndex": 1736.74,
+    "date": "2025-05-01T00:00:00.000Z"
+  },
+  {
+    "month": "2025年06月",
+    "vacancyRate": 3.37,
+    "rentalRate": 20877,
+    "reitIndex": 1778.87,
+    "date": "2025-06-01T00:00:00.000Z"
+  },
+  {
+    "month": "2025年07月",
+    "vacancyRate": 3.16,
+    "rentalRate": 20907,
+    "reitIndex": 1859.19,
+    "date": "2025-07-01T00:00:00.000Z"
+  },
+  {
+    "month": "2025年08月",
+    "vacancyRate": 2.85,
+    "rentalRate": 21027,
+    "reitIndex": 1917.89,
+    "date": "2025-08-01T00:00:00.000Z"
+  },
+  {
+    "month": "2025年09月",
+    "vacancyRate": 2.68,
+    "rentalRate": 21092,
+    "reitIndex": 1921.07,
+    "date": "2025-09-01T00:00:00.000Z"
+  },
+  {
+    "month": "2025年10月",
+    "vacancyRate": 2.59,
+    "rentalRate": 21261,
+    "reitIndex": 1962.44,
+    "date": "2025-10-01T00:00:00.000Z"
   }
   ];
 
