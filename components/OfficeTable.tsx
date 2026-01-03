@@ -30,7 +30,7 @@ const OfficeTable: React.FC<OfficeTableProps> = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => (
+          {[...data].reverse().map((item, index) => (
             <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#fff' : '#f9f9f9' }}>
               <td style={{ padding: '12px', border: '1px solid #ddd' }}>
                 {item.month}
