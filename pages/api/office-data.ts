@@ -2022,6 +2022,13 @@ const getHistoricalData = (): OfficeData[] => {
       "rentalRate": 21308,
       "reitIndex": 2023.80,
       "date": "2025-11-01T00:00:00.000Z"
+    },
+    {
+      "month": "2025年12月",
+      "vacancyRate": 2.22,
+      "rentalRate": 21409,
+      "reitIndex": 2013.50,
+      "date": "2025-12-01T00:00:00.000Z"
     }
   ];
 
