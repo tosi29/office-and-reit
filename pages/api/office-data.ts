@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { OfficeApiResponse, OfficeData } from '../../types/office';
 
 // Historical office data extracted from issue #8 with complete dataset
-// Full dataset from 2001-12 to 2025-04 with proper REIT index data
+// Full dataset from 2001-12 to 2026-05 with proper REIT index data
 // Data sorted chronologically (oldest first) for proper chart display
 const getHistoricalData = (): OfficeData[] => {
   const historicalData: OfficeData[] = [
@@ -2029,6 +2029,41 @@ const getHistoricalData = (): OfficeData[] => {
       "rentalRate": 21409,
       "reitIndex": 2013.50,
       "date": "2025-12-01T00:00:00.000Z"
+    },
+    {
+      "month": "2026年01月",
+      "vacancyRate": 2.15,
+      "rentalRate": 21648,
+      "reitIndex": 1978.31,
+      "date": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "month": "2026年02月",
+      "vacancyRate": 2.20,
+      "rentalRate": 21969,
+      "reitIndex": 1999.33,
+      "date": "2026-02-01T00:00:00.000Z"
+    },
+    {
+      "month": "2026年03月",
+      "vacancyRate": 2.22,
+      "rentalRate": 22302,
+      "reitIndex": 1848.45,
+      "date": "2026-03-01T00:00:00.000Z"
+    },
+    {
+      "month": "2026年04月",
+      "vacancyRate": 2.20,
+      "rentalRate": 22454,
+      "reitIndex": 1880.28,
+      "date": "2026-04-01T00:00:00.000Z"
+    },
+    {
+      "month": "2026年05月",
+      "vacancyRate": 2.07,
+      "rentalRate": 22845,
+      "reitIndex": 1809.65,
+      "date": "2026-05-01T00:00:00.000Z"
     }
   ];
 
